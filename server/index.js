@@ -24,6 +24,7 @@ app.post('/todos', async (req, res) => {
 
 // Get all todos
 app.get('/todos', async (req,res) => {
+    console.log("Fetching")
     try {
          const todos = await pool.query("SELECT * FROM todo");
          res.json(todos.rows);
