@@ -14,9 +14,9 @@ const EditTodo = ({ todo }) => {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
-            })
+            });
 
-            window.location = '/'
+            window.location = "/";
         } catch (err) {
             console.error(err.message);
         }
@@ -33,7 +33,13 @@ const EditTodo = ({ todo }) => {
                 Edit
             </button>
 
-            <div className="modal" id={`id${todo.todo_id}`}>
+            <div
+                className="modal"
+                id={`id${todo.todo_id}`}
+                onClick={() => {
+                    setDescription(todo.description);
+                }}
+            >
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -42,6 +48,9 @@ const EditTodo = ({ todo }) => {
                                 type="button"
                                 className="close"
                                 data-dismiss="modal"
+                                onClick={() => {
+                                    setDescription(todo.description);
+                                }}
                             >
                                 &times;
                             </button>
@@ -69,6 +78,9 @@ const EditTodo = ({ todo }) => {
                                 type="button"
                                 className="btn btn-danger"
                                 data-dismiss="modal"
+                                onClick={() => {
+                                    setDescription(todo.description);
+                                }}
                             >
                                 Close
                             </button>
